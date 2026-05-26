@@ -3,7 +3,7 @@
 #include <zephyr/drivers/gpio.h>
 
 // Settings
-static const int32_t sleep_time_ms = 1000;
+static const int32_t sleep_time_ms = 200;
 static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_ALIAS(my_led), gpios);
 
 int main(void)
