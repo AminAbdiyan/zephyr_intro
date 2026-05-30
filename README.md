@@ -126,7 +126,7 @@ Open a terminal in the VS Code client and build the project. Note that I'm using
 
 ```
 cd apps/01_demo_blink
-west build -p always -b esp32s3_devkitc/esp32s3/procpu -- -DDTC_OVERLAY_FILE=boards/esp32s3_devkitc.overlay
+west build -p always -b esp32_devkitc_wroom/esp32/procpu -- -DDTC_OVERLAY_FILE=boards/esp32_devkitc.overlay
 ```
 
 With some luck, the *blink* sample should build. The binary files will be in *workspace/apps/blink/build/zephyr*, which you can flash using [esptool](https://docs.espressif.com/projects/esptool/en/latest/esp32/).
