@@ -5,6 +5,7 @@
 // Settings
 static const int32_t sleep_time_ms = 100;
 static const struct gpio_dt_spec btn = GPIO_DT_SPEC_GET(DT_ALIAS(my_button), gpios);
+static const struct gpio_dt_spec led = GPIO_DT_SPEC_GET(DT_NODELABEL(led0), gpios);
 
 int main(void)
 {
@@ -23,6 +24,16 @@ int main(void)
         return 0;
     }
 
+    // Make sure that the GPIO was initialized
+	if (!gpio_is_ready_dt(&led)) {
+		return 0;
+	}
+
+	// Set the GPIO as output
+	ret = gpio_pin_configure_dt(&led, GPIO_OUTPUT);
+	if (ret < 0) {
+		return 0;
+	}
     // Print out the flags
     printk("Button spec flags: 0x%x\r\n", btn.dt_flags);
 
@@ -32,8 +43,10 @@ int main(void)
         // Poll button state
         state = gpio_pin_get_dt(&btn);
         if (state < 0) {
+            gpio_pin_set_dt(&led, state);
             printk("Error %d: failed to read button pin\r\n", state);
         } else {
+            gpio_pin_set_dt(&led, state);
             printk("Button state: %d\r\n", state);
         }
 

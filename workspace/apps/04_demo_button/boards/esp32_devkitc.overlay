@@ -1,6 +1,7 @@
 / {
     aliases {
         my-button = &button_1;
+        my-led = &led0;
     };
 
     buttons {
@@ -10,6 +11,13 @@
 
         button_1: d0 {
             gpios = <&gpio0 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>;
+        };
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        led0: d13 {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
         };
     };
 };
