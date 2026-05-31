@@ -1,18 +1,18 @@
 /{
     aliases {
-        my-adc = &adc0;
-        my-adc-channel = &adc0_ch0;
+        my-adc = &adc1;
+        my-adc-channel = &adc1_ch3;
     };
 };
 
-// ADC1 (adc0) channel 0 is connected to GPIO1
-&adc0 {
+// ADC2 (adc1) channel 3 is connected to GPIO15
+&adc1 {
     status = "okay";
     #address-cells = <1>;
     #size-cells = <0>;
 
-    adc0_ch0: channel@0 {
-        reg = <0>;
+    adc1_ch3: channel@3 {
+        reg = <3>;
         zephyr,gain = "ADC_GAIN_1_4";
         zephyr,reference = "ADC_REF_INTERNAL";
         zephyr,vref-mv = <3894>;
