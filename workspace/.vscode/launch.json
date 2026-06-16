@@ -18,6 +18,25 @@
                     "ignoreFailures": true
                 }
             ]
+        },
+        {
+            "name": "Debug MCXN236",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${input:elfPath}",
+            "args": [],
+            "stopAtEntry": true,
+            "cwd":  "${workspaceFolder}",
+            "MIMode": "gdb",
+            "miDebuggerPath": "/opt/toolchains/zephyr-sdk-0.16.8/arm-zephyr-eabi/bin/arm-zephyr-eabi-gdb",
+            "miDebuggerServerAddress": "host.docker.internal:3333",
+            "setupCommands": [
+                {
+                    "description": "Pretty print for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ] // execute pyocd gdbserver -t mcxn236 in the terminal before starting this debug configuration
         }
     ],
     "inputs": [
