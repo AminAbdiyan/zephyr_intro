@@ -36,7 +36,24 @@
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ] // execute pyocd gdbserver -t mcxn236 in the terminal before starting this debug configuration
+            ], // execute pyocd erase --chip -t mcxn236 and pyocd gdbserver -t mcxn236 --persist --allow-remote in the terminal before starting this debug session
+            "postRemoteConnectCommands": [
+                {
+                    "description": "Halt the target",
+                    "text": "monitor halt",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Flash firmware onto target",
+                    "text": "load",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Reset target after flash",
+                    "text": "monitor reset",
+                    "ignoreFailures": true
+                }
+            ]
         }
     ],
     "inputs": [
