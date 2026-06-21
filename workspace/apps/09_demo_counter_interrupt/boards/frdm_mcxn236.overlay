@@ -1,0 +1,10 @@
+/ {
+    aliases {
+        my-timer = &ctimer0;
+    };
+};
+
+&ctimer0 {
+    status = "okay";
+    prescale = <4000>;
+};
