@@ -7,8 +7,8 @@
 #include "wifi.h"
 
 // WiFi settings
-#define WIFI_SSID "MySSID"
-#define WIFI_PSK "MyPassword"
+#define WIFI_SSID "Vodafone-B6D0"
+#define WIFI_PSK "n9THKGiAX6La3FLR"
 
 // HTTP GET settings
 #define HTTP_HOST "example.com"

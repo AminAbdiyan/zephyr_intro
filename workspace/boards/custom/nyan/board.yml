@@ -3,4 +3,4 @@ board:
   full_name: Nyan
   vendor: custom
   socs:
-  - name: esp32s3
+  - name: esp32

@@ -1,42 +1,44 @@
 /dts-v1/;
 
-#include "espressif/esp32s3/esp32s3_wroom_n8.dtsi"
+#include <espressif/esp32/esp32_wroom_32ue_n4.dtsi>
 #include "nyan-pinctrl.dtsi"
 #include <zephyr/dt-bindings/input/input-event-codes.h>
-#include <espressif/partitions_0x0_amp.dtsi>
+#include <espressif/partitions_0x1000_amp.dtsi>
 
 / {
     model = "Nyan PROCPU";
-    compatible = "espressif,esp32s3";
+	compatible = "espressif,esp32";
 
-    aliases {
-        watchdog0 = &wdt0;
-        led-0 = &led0;
-        uart-0 = &uart0;
-        sw0 = &button0;
-    };
+	aliases {
+		uart-0 = &uart0;
+		i2c-0 = &i2c0;
+		sw0 = &button0;
+		watchdog0 = &wdt0;
+		led-0 = &led0_2;
+	};
 
-    chosen {
-        zephyr,sram = &sram0;
-        zephyr,console = &uart0;
-        zephyr,shell-uart = &uart0;
-        zephyr,flash = &flash0;
-        zephyr,code-partition = &slot0_partition;
-    };
+	buttons {
+		compatible = "gpio-keys";
+		button0: button_0 {
+			gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+			label = "BOOT Button";
+			zephyr,code = <INPUT_KEY_0>;
+		};
+	};
 
-    buttons {
-        compatible = "gpio-keys";
-        button0: button_0 {
-            gpios = <&gpio0 0 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
-            label = "Boot Button";
-            zephyr,code = <INPUT_KEY_0>;
-        };
-    };
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &uart0;
+		zephyr,shell-uart = &uart0;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+		zephyr,bt-hci = &esp32_bt_hci;
+	};
 
     led {
         compatible = "gpio-leds";
-        led0: d13 {
-            gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+        led0_2: d02 {
+            gpios = <&gpio0 2 GPIO_ACTIVE_HIGH>;
         };
     };
 };

@@ -27,7 +27,7 @@ int main(void)
 
         // Change the state of the pin and print
         state = !state;
-        printk("LED state: %d\r\n", state);
+        printk("Current LED state: %d\r\n", state);
 
         // Set pin state
         ret = gpio_pin_set_dt(&led, state);
